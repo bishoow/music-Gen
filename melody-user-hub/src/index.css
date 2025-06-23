@@ -1,0 +1,102 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: blur(16px) brightness(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    filter: blur(24px) brightness(1.3);
+    opacity: 1;
+  }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+@layer base {
+  :root {
+    --background: 250 33% 96%;
+    --foreground: 250 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 250 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 250 10% 15%;
+
+    --primary: 250 60% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 40% 96%;
+    --secondary-foreground: 250 30% 30%;
+
+    --muted: 250 10% 92%;
+    --muted-foreground: 250 10% 40%;
+
+    --accent: 220 70% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 250 10% 85%;
+    --input: 250 10% 85%;
+    --ring: 250 60% 60%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 250 20% 10%;
+    --foreground: 250 10% 95%;
+
+    --card: 250 20% 12%;
+    --card-foreground: 250 10% 95%;
+
+    --popover: 250 20% 12%;
+    --popover-foreground: 250 10% 95%;
+
+    --primary: 250 60% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 250 20% 18%;
+    --secondary-foreground: 250 10% 90%;
+
+    --muted: 250 20% 18%;
+    --muted-foreground: 250 10% 70%;
+
+    --accent: 220 70% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 250 20% 25%;
+    --input: 250 20% 25%;
+    --ring: 250 60% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .music-wave {
+    @apply inline-block w-1 mx-[2px] rounded-full bg-music-purple;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-to-br from-music-purple via-music-blue to-music-gold;
+  }
+}
