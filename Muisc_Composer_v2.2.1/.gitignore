@@ -1,0 +1,111 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+venv10/
+ENV/
+env/
+.venv/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# React build
+frontend/build/
+frontend/dist/
+
+# Audio files (temporary)
+*.wav
+*.mp3
+*.ogg
+uploads/
+generated/
+
+# MIDI files (temporary)
+*.mid
+*.midi
+
+# Logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+tempCodeRunnerFile.py
+
+# Model weights and training data
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Testing artifacts
+Testings/output.mid
+Testings/generated_melody.json
+Testings/start_sequence.json
+Testings/humming.wav
+
+# Core ML models and training data
+Cores/
+.vs/
+
+# Backend uploads and generated files
+backend/uploads/
+backend/generated/
+
+
