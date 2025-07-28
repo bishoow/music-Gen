@@ -9,14 +9,19 @@ type UserData = {
   name: string;
   email: string;
   avatarUrl?: string;
+  avatarEmoji?: string;
   plan?: string;
   tracksCreated?: number;
   joined?: string;
 };
 
+const EMOJI_OPTIONS = ["🎵", "🎸", "🎧", "🎤", "🎹", "🥁","💀", "🎷"];
+
 const Profile = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editingAvatar, setEditingAvatar] = useState(false);
+  const [selectedEmoji, setSelectedEmoji] = useState<string>("");
 
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
@@ -39,6 +44,7 @@ const Profile = () => {
         }
         const data = await res.json();
         setUserData(data);
+        setSelectedEmoji(data.avatarEmoji || "");
         setLoading(false);
       })
       .catch(() => {
@@ -46,6 +52,16 @@ const Profile = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleEmojiSelect = (emoji: string) => {
+    setSelectedEmoji(emoji);
+    setEditingAvatar(false);
+    // Optionally, send to backend:
+    // updateAvatarEmoji(emoji);
+    setUserData((prev) =>
+      prev ? { ...prev, avatarEmoji: emoji, avatarUrl: "" } : prev
+    );
+  };
 
   if (loading) {
     return (
@@ -72,12 +88,35 @@ const Profile = () => {
         {/* User Profile Header */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            <Avatar className="h-24 w-24">
-              <AvatarImage src={userData.avatarUrl || ""} />
-              <AvatarFallback className="bg-music-purple text-white text-3xl">
-                {userData.name?.charAt(0)}
-              </AvatarFallback>
-            </Avatar>
+            <div className="relative">
+              <Avatar className="h-24 w-24 cursor-pointer" onClick={() => setEditingAvatar(true)}>
+                {userData.avatarUrl ? (
+                  <AvatarImage src={userData.avatarUrl} />
+                ) : (
+                 <AvatarFallback className="bg-music-purple text-white text-5xl select-none">
+  {userData.avatarEmoji || userData.name?.charAt(0)}
+</AvatarFallback>
+                )}
+              </Avatar>
+              {editingAvatar && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-xl shadow-lg p-3 flex gap-2 z-20">
+                  {EMOJI_OPTIONS.map((emoji) => (
+                    <button
+                      key={emoji}
+                      className={`text-2xl p-1 rounded-full border-2 ${
+                        selectedEmoji === emoji
+                          ? "border-music-purple bg-music-purple/10"
+                          : "border-transparent"
+                      } hover:bg-muted transition`}
+                      onClick={() => handleEmojiSelect(emoji)}
+                      type="button"
+                    >
+                      {emoji}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="flex-1 space-y-3 text-center md:text-left">
               <h1 className="text-3xl font-bold">{userData.name}</h1>
               <div className="flex flex-wrap justify-center md:justify-start gap-4">

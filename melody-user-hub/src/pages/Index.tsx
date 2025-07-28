@@ -91,16 +91,12 @@ return (
                           AI-generated music visualizer would appear here
                         </p>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        {["🎸 Rock", "🎹 Classical", "🎧 Electronic", "🎤 Hip-Hop"].map((genre, i) => (
-                          <Button key={i} variant="outline" size="sm" className="flex justify-start text-sm md:text-base">
-                            <span className="mr-2">{genre.split(" ")[0]}</span> {genre.split(" ")[1]}
-                          </Button>
-                        ))}
-                      </div>
-                      <Button className="w-full bg-music-purple hover:bg-music-purple/90 py-4 text-base md:text-lg">
-                        Generate Track
-                      </Button>
+                      
+                     <a href =" http://localhost:3000">
+  <Button className="w-full bg-music-purple hover:bg-music-purple/90 py-4 text-base md:text-lg">
+    Generate Track
+  </Button>
+</a>
                     </div>
                   </div>
                 </div>

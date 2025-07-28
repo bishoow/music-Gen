@@ -82,7 +82,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       description: "Your account has been successfully created",
     });
 
-    navigate("/profile");
+    navigate("/login");
   } catch (error) {
     toast({
       title: "Error",
